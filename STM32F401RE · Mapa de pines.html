@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="es"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>STM32F401RE · Mapa de pines</title>
+<style>
+:root{box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);--bg:#0f1115;--card:#171a21;--bd:#2a2f3a;--tx:#d6dbe4;--mut:#8b94a3}
+*{box-sizing:border-box}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg);color:var(--tx);font:14px system-ui,-apple-system,Segoe UI,sans-serif;padding:14px}
+h1{font-size:17px;margin:0 0 12px;font-weight:600}
+.card{background:var(--card);border:1px solid var(--bd);border-radius:10px;padding:12px;margin-bottom:12px}
+.card h2{font-size:12px;color:var(--mut);margin:0 0 10px;text-transform:uppercase;letter-spacing:.06em;font-weight:600;display:flex;justify-content:space-between;align-items:center}
+.row{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.row+.row{margin-top:10px}
+input[type=text]{background:#0f1115;border:1px solid var(--bd);color:var(--tx);border-radius:6px;padding:6px 8px;font:inherit}
+input[type=text]:disabled{opacity:.45}
+input[type=color]{width:44px;height:32px;border:1px solid var(--bd);background:none;border-radius:6px;padding:0}
+button{background:#232833;border:1px solid var(--bd);color:var(--tx);border-radius:6px;padding:6px 10px;cursor:pointer;font:inherit}
+button:hover{background:#2c3340}
+button.danger{color:#ff8a8a}
+button:disabled{opacity:.4;cursor:default}
+.views{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px}
+.views>.card{min-width:0;display:flex;flex-direction:column;margin-bottom:0}.views>.card>:last-child{margin-top:auto;margin-bottom:auto}
+.scroll{overflow:hidden;width:100%}
+svg{width:600px;max-width:100%;overflow:visible;height:auto;display:block;margin:0}
+.cp rect{fill:var(--c,#2a2f3a);stroke:#3b4252}
+.cp .pn{fill:var(--t,#cbd5e1);font-size:10px;text-anchor:middle;dominant-baseline:central;pointer-events:none}
+.cp .nl{fill:var(--c,#cbd5e1);font-size:12px;font-weight:600;dominant-baseline:central;pointer-events:none}
+.cp.x rect{fill:#1b1f27}.cp.x .pn{fill:#6b7483}
+.cp.clk{cursor:pointer}.cp.clk:hover rect{stroke:#fff}
+.cp.sel rect{stroke:#fff;stroke-width:2.5}
+/* placa */
+.pcb{background:#1b1f27;border:1px solid #2a2f3a;width:520px;margin:0;transform-origin:0 0;border-radius:6px;padding:12px 10px 10px;color:#cbd5e1;font-size:11px}
+.bgrid{display:grid;grid-template-columns:46px 20px 20px 46px 20px 46px 44px 46px 20px 46px 20px 20px 46px;grid-template-rows:72px 18px repeat(19,17px) 18px;justify-content:center;row-gap:1px}
+.bgrid>*{position:relative}
+.body{grid-column:2/13;grid-row:2/23;background:#222733}
+.gray{grid-column:2/13;grid-row:1/3;background:#2c313b;display:flex;align-items:center;justify-content:center;font-size:17px;font-weight:600;color:#e5e9f0;padding-bottom:12px}
+.gray:before,.gray:after{content:"";position:absolute;bottom:0;width:46px;height:5px;background:#1b1f27}
+.gray:before{left:14%}.gray:after{right:14%}
+.hd{font-size:11px;font-weight:700;color:#cbd5e1;text-align:center;align-self:end;z-index:1;white-space:nowrap;overflow:visible}
+.lb{align-self:center;white-space:nowrap;color:var(--c,#7f9bff);font-weight:var(--w,400);z-index:1}
+.l{text-align:right;padding-right:5px}.rr{padding-left:5px}
+.a{color:var(--c,#e070d8)}
+.pin{align-self:center;display:block;width:18px;height:15px;line-height:15px;margin:0 auto;text-align:center;font-size:9px;font-style:normal;font-weight:700;background:var(--c,#2a45c8);color:var(--t,#fff);z-index:1}
+.pin.ar{background:var(--c,#b81eb0)}
+.pin.nc{opacity:.9}
+.clk{cursor:pointer}.pin.clk:hover,.lb.clk:hover{outline:1px solid #fff}
+.sel.pin{outline:2px solid #fff}.lb.sel{text-decoration:underline}
+.key{display:flex;gap:26px;justify-content:center;margin-top:8px;font-size:11px}
+.key i{display:inline-block;width:12px;height:12px;vertical-align:middle;margin-right:6px}
+.leg{display:flex;flex-wrap:wrap;gap:8px}
+.chip{display:flex;gap:6px;align-items:center;border:1px solid var(--bd);border-radius:14px;padding:3px 10px 3px 5px;cursor:pointer;font-size:12px}
+.chip i{width:16px;height:16px;border-radius:50%;display:inline-block;border:1px solid #0006}
+.chip.on{border-color:#fff}
+.chip .x{color:var(--mut);margin-left:4px;padding:0 3px}.chip .x:hover{color:#ff8a8a}
+.grp{display:flex;gap:8px;align-items:baseline;flex-wrap:wrap;margin-bottom:6px}
+.grp i{width:14px;height:14px;border-radius:3px;display:inline-block;align-self:center;cursor:pointer}
+.mut{color:var(--mut);font-size:12px}
+.pin:not(.clk){background:#3b4560;color:#9aa5bd;border-color:#4a5573}
+.pin.ar:not(.clk){background:#5a465a;color:#b3a3b3;border-color:#6d566d}
+.lb:not(.clk){color:#6f7a90}
+.lb.a:not(.clk){color:#8d7a8d}
+@keyframes bl{0%,100%{opacity:1}50%{opacity:.15}}
+.cp.blink rect,.cp.blink .nl,.pin.blink,.lb.blink{animation:bl 1.5s ease-in-out infinite}
+.top2{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px}.top2>.card{margin-bottom:0}
+@media (max-aspect-ratio:1/1),(max-width:1290px){.views{grid-template-columns:1fr}}
+
+.cfg{display:flex;gap:16px;align-items:stretch;justify-content:flex-start}.sec{flex:0 1 auto;min-width:0}.sec:first-child{width:400px;max-width:100%}.sep{width:1px;background:var(--bd);flex:none}.lbl{color:var(--mut);font-size:13px}
+@media (max-width:760px){.top2{grid-template-columns:1fr}.cfg{flex-direction:column}.card .cfg{gap:8px}.cfg .sep{width:auto;height:1px}.cfg .sec,.cfg .sec:first-child{width:520px;max-width:100%}.cfg .sec .row input[type=text]{flex:1 1 0;min-width:60px;width:auto!important}.cfg #lib{margin-top:6px!important}}
+</style></head><body>
+<h1>STM32F401RE · Mapa de pines</h1>
+
+<div class="card"><h2>Configuración del pin</h2>
+<div class="cfg">
+<div class="sec"><div class="row"><b id="sp" style="min-width:36px">—</b><span class="lbl">Color:</span><input type="color" id="cur" value="#4da3ff" title="Color actual"><input type="text" id="nm" maxlength="25" style="width:140px"><button id="sv">Guardar</button></div>
+<div class="leg" id="lib" style="margin-top:10px"></div></div>
+<div class="sep"></div>
+<div class="sec"><div class="row"><span class="lbl">Nombre:</span><input type="text" id="pn" maxlength="25" disabled style="width:120px"><button id="save">Guardar pin</button><button id="del" class="danger">Eliminar pin</button></div></div>
+</div></div>
+<div class="views">
+ <div class="card"><h2>Chip · LQFP64</h2><svg id="chip" viewBox="-90 -70 740 650"></svg></div>
+ <div class="card"><h2>Placa · NUCLEO-F401RE</h2><div class="scroll"><div class="pcb"><div class="bgrid" id="board"></div>
+ <div class="key"><span style="color:#e070d8"><i style="background:#b81eb0"></i>Arduino</span><span style="color:#7f9bff"><i style="background:#2a45c8"></i>Morpho</span></div></div></div></div>
+</div>
+
+<div class="card"><h2>Pines usados <button class="danger" id="clr">Limpiar todos los pines</button></h2><div id="leg"></div></div>
+
+<script>
+const GPIO=/^P[A-H]\d+$/;
+const $=s=>document.querySelector(s);
+let S={},L=[],sel=null,hv=null;
+try{const o=JSON.parse(localStorage.getItem('stm32pins3')||localStorage.getItem('stm32pins2')||'{}');for(const k in o)S[k]=typeof o[k]==='string'?{c:o[k],l:''}:o[k];L=JSON.parse(localStorage.getItem('stm32lib')||'[]')}catch(e){}
+const save=()=>{try{localStorage.setItem('stm32pins3',JSON.stringify(S));localStorage.setItem('stm32lib',JSON.stringify(L))}catch(e){}};
+const esc=s=>String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;');
+
+// ---- Chip ----
+const CHIP="VBAT PC13 PC14 PC15 PH0 PH1 NRST PC0 PC1 PC2 PC3 VSSA VREF+ PA0 PA1 PA2 PA3 VSS VDD PA4 PA5 PA6 PA7 PC4 PC5 PB0 PB1 PB2 PB10 VCAP1 VSS VDD PB12 PB13 PB14 PB15 PC6 PC7 PC8 PC9 PA8 PA9 PA10 PA11 PA12 PA13 VSS VDD PA14 PA15 PC10 PC11 PC12 PD2 PB3 PB4 PB5 PB6 PB7 BOOT0 PB8 PB9 VSS VDD".split(' ');
+let h='<rect x="80" y="80" width="400" height="400" rx="6" fill="#222733" stroke="#3b4252"/><circle cx="100" cy="100" r="5" fill="#3b4252"/><text x="280" y="270" fill="#8b94a3" font-size="20" text-anchor="middle" font-weight="600">STM32F401RET6</text><text x="280" y="294" fill="#6b7483" font-size="12" text-anchor="middle">LQFP64 · vista superior</text>';
+CHIP.forEach((n,k)=>{
+  let x,y,v,i,side;
+  if(k<16){i=k;x=40;y=80+i*25;v=0;side=0}
+  else if(k<32){i=k-16;x=80+i*25;y=480;v=1;side=1}
+  else if(k<48){i=k-32;x=480;y=80+(15-i)*25;v=0;side=2}
+  else{i=k-48;x=80+(15-i)*25;y=40;v=1;side=3}
+  const rw=v?21:40,rh=v?40:21,cx=x+rw/2,cy=y+rh/2,g=GPIO.test(n);
+  let nl='';
+  if(g){
+    if(side==0)nl=`<text class="nl" x="${x-5}" y="${cy}" text-anchor="end"></text>`;
+    if(side==2)nl=`<text class="nl" x="${x+rw+5}" y="${cy}" text-anchor="start"></text>`;
+    if(side==3)nl=`<text class="nl" x="${cx}" y="${y-5}" text-anchor="start" transform="rotate(-90 ${cx} ${y-5})"></text>`;
+    if(side==1)nl=`<text class="nl" x="${cx}" y="${y+rh+5}" text-anchor="end" transform="rotate(-90 ${cx} ${y+rh+5})"></text>`;
+  }
+  h+=`<g class="cp ${g?'clk':'x'}" ${g?`data-n="${n}"`:''}><title>Pin ${k+1}: ${n}</title><rect x="${x}" y="${y}" width="${rw}" height="${rh}" rx="2"/><text class="pn" x="${cx}" y="${cy}" ${v?`transform="rotate(-90 ${cx} ${cy})"`:''}>${n}</text>${nl}</g>`;
+});
+$('#chip').innerHTML=h;
+
+// ---- Placa (réplica del pinout oficial) ----
+const CN7="PC10 PC11 PC12 PD2 VDD E5V BOOT0 GND NC NC NC IOREF PA13 RESET PA14 +3V3 PA15 +5V GND GND PB7 GND PC13 VIN PC14 NC PC15 PA0 PH0 PA1 PH1 PA4 VBAT PB0 PC2 PC1 PC3 PC0".split(' ');
+const CN10="PC9 PC8 PB8 PC6 PB9 PC5 AVDD U5V GND NC PA5 PA12 PA6 PA11 PA7 PB12 PB6 NC PC7 GND PA9 PB2 PA8 PB1 PB10 PB15 PB4 PB14 PB5 PB13 PB3 AGND PA10 PC4 PA2 NC PA3 NC".split(' ');
+const CN6=[["NC","NC"],["IOREF","IOREF"],["RESET","RESET"],["+3V3","+3V3"],["+5V","+5V"],["GND","GND"],["GND","GND"],["VIN","VIN"]];
+const CN8=[["A0","PA0"],["A1","PA1"],["A2","PA4"],["A3","PB0"],["A4","PC1"],["A5","PC0"]];
+const CN5=[["D15","PB8"],["D14","PB9"],["AVDD","AVDD"],["GND","GND"],["D13","PA5"],["D12","PA6"],["D11","PA7"],["D10","PB6"],["D9","PC7"],["D8","PA9"]];
+const CN9=[["D7","PA8"],["D6","PB10"],["D5","PB4"],["D4","PB5"],["D3","PB3"],["D2","PA10"],["D1","PA2"],["D0","PA3"]];
+const LA={},RA={};
+CN6.forEach((x,i)=>LA[4+i]=[...x,i+1]);CN8.forEach((x,i)=>LA[13+i]=[...x,i+1]);
+CN5.forEach((x,i)=>RA[1+i]=[...x,10-i]);CN9.forEach((x,i)=>RA[11+i]=[...x,8-i]);
+const gp=n=>GPIO.test(n);
+const dn=n=>gp(n)?`data-n="${n}"`:'';
+const box=(n,t,ar)=>`<i class="pin ${ar?'ar':''} ${gp(n)?'clk':''}" ${dn(n)}>${t}</i>`;
+const lab=(n,c,x)=>`<span class="lb ${c||''} ${gp(n)?'clk':''}" ${dn(n)}>${n}</span>`;
+const E='<span></span>';
+let b='<div class="body"></div><div class="gray">NUCLEO-F401RE</div>';
+b+=`<b class="hd" style="grid-column:2/4;grid-row:2">CN7</b><b class="hd" style="grid-column:5;grid-row:2">CN6</b><b class="hd" style="grid-column:9;grid-row:2">CN5</b><b class="hd" style="grid-column:11/13;grid-row:2">CN10</b>`;
+for(let r=0;r<19;r++){
+  const la=LA[r],ra=RA[r],put=(c,x)=>x.replace(/^<(\w+)/,`<$1 style="grid-area:${r+3}/${c}"`);
+  b+=put(1,lab(CN7[2*r],'l'))+put(2,box(CN7[2*r],2*r+1))+put(3,box(CN7[2*r+1],2*r+2));
+  if(la)b+=put(5,box(la[1],la[2],1))+put(6,`<span class="lb a rr ${gp(la[1])?'clk':''}" ${dn(la[1])}>${la[0]}</span>`);
+  b+=put(4,lab(CN7[2*r+1],'rr'));
+  if(ra)b+=put(8,`<span class="lb a l ${gp(ra[1])?'clk':''}" ${dn(ra[1])}>${ra[0]}</span>`)+put(9,box(ra[1],ra[2],1));
+  b+=put(10,lab(CN10[2*r],'l'))+put(11,box(CN10[2*r],2*r+1))+put(12,box(CN10[2*r+1],2*r+2))+put(13,lab(CN10[2*r+1],'rr'));
+}
+b+=`<b class="hd" style="grid-column:5;grid-row:22;align-self:start">CN8</b><b class="hd" style="grid-column:9;grid-row:22;align-self:start">CN9</b>`;
+$('#board').innerHTML=b;
+
+// ---- Lógica ----
+const isLight=c=>{const n=parseInt(c.slice(1),16);return (0.299*(n>>16)+0.587*(n>>8&255)+0.114*(n&255))>150};
+const nameOf=c=>{const f=L.find(x=>x.c===c);return f?f.n:c};
+function paint(){
+  document.querySelectorAll('[data-n]').forEach(e=>{
+    const n=e.dataset.n,d=S[n],c=d&&d.c;
+    e.style.setProperty('--c',c||'');
+    e.style.setProperty('--t',c?(isLight(c)?'#000':'#fff'):'');
+    e.style.setProperty('--w',c?'700':'');
+    e.classList.toggle('sel',n===sel);
+    const t=e.querySelector('.nl');if(t)t.textContent=d?(d.l.length>12?d.l.slice(0,11)+'…':d.l):'';
+  });
+  const cur=$('#cur').value.toLowerCase();
+  $('#lib').innerHTML=L.map((x,i)=>`<div class="chip ${x.c===cur?'on':''}" data-lc="${x.c}"><i style="background:${x.c}"></i>${esc(x.n)}<span class="x" data-del="${i}" title="Eliminar">×</span></div>`).join('');
+  const g={};Object.keys(S).sort().forEach(n=>(g[S[n].c]=g[S[n].c]||[]).push(n));
+  const ks=Object.keys(g);
+  $('#leg').innerHTML=ks.length?ks.map(c=>`<div class="grp"><i style="background:${c}" data-lc="${c}"></i><b>${esc(nameOf(c))}</b><span class="mut">${g[c].map(n=>n+(S[n].l?' ('+esc(S[n].l)+')':'')).join(' · ')}</span></div>`).join(''):'<span class="mut">Aún no hay pines usados.</span>';
+}
+function blinkUpdate(){document.querySelectorAll('.blink').forEach(x=>x.classList.remove('blink'));[sel].forEach(n=>{if(n)document.querySelectorAll('[data-n="'+n+'"]').forEach(x=>x.classList.add('blink'))})}
+function sync(){blinkUpdate();
+  const i=$('#pn');
+  $('#sp').textContent=sel||'—';
+  i.disabled=!sel;i.value=sel&&S[sel]?S[sel].l:'';
+  $('#save').disabled=!sel;$('#del').disabled=!sel||!S[sel];
+}
+document.addEventListener('click',e=>{
+  const d=e.target.closest('[data-del]');
+  if(d){L.splice(+d.dataset.del,1);save();return paint()}
+  const p=e.target.closest('.clk[data-n]');
+  if(p){const n=p.dataset.n;if(sel===n)sel=null;else{sel=n;if(S[n])$('#cur').value=S[n].c}paint();return sync()}
+  const l=e.target.closest('[data-lc]');
+  if(l){$('#cur').value=l.dataset.lc;paint()}
+});
+function saveP(){if(!sel)return;S[sel]={c:$('#cur').value.toLowerCase(),l:$('#pn').value.trim()};save();paint();sync()}
+$('#save').onclick=saveP;
+$('#pn').onkeydown=e=>{if(e.key==='Enter')saveP()};
+$('#del').onclick=()=>{if(sel&&S[sel]){delete S[sel];save();paint();sync()}};
+document.addEventListener('keydown',e=>{if(e.key==='Escape'&&sel){sel=null;paint();sync()}});
+$('#cur').oninput=paint;
+$('#sv').onclick=()=>{
+  const c=$('#cur').value.toLowerCase(),n=$('#nm').value.trim()||c;
+  const f=L.find(x=>x.c===c);if(f)f.n=n;else L.push({n,c});
+  $('#nm').value='';save();paint();
+};
+let ct;$('#clr').onclick=e=>{const b=e.currentTarget;
+  if(b.dataset.arm){clearTimeout(ct);delete b.dataset.arm;b.textContent='Limpiar todos los pines';S={};sel=null;save();paint();sync();return}
+  if(!Object.keys(S).length)return;
+  b.dataset.arm=1;b.textContent='¿Seguro? Clic otra vez para confirmar';
+  ct=setTimeout(()=>{delete b.dataset.arm;b.textContent='Limpiar todos los pines'},3000)};
+paint();sync();
+function fit(){const w=$('.scroll'),p=$('.pcb');p.style.transform='none';const k=Math.min(1,w.clientWidth/p.offsetWidth);p.style.transform='scale('+k+')';p.style.marginLeft=Math.max(0,(w.clientWidth-p.offsetWidth*k)/2)+'px';w.style.height=(p.offsetHeight*k)+'px'}
+try{new ResizeObserver(fit).observe($('.scroll'))}catch(e){}
+addEventListener('resize',fit);fit();
+</script></body></html>
